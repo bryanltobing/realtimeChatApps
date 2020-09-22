@@ -22,22 +22,20 @@ const autoScroll = () => {
     // Height of the last message
     const newMessageStyles = getComputedStyle($newMessage);
     const newMessageMargin = parseInt(newMessageStyles.marginBottom);
-    const newMessageHeight = $newMessage.offSetHeight + newMessageMargin;
+    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin;
 
     // Visible Height
-    const visibleHeight = $messages.offSetHeight;
+    const visibleHeight = $messages.offsetHeight;
 
     // Height of messages container
     const containerHeight = $messages.scrollHeight;
 
-    // How far have i scrolled ?
+    // How far have I scrolled?
     const scrollOffset = $messages.scrollTop + visibleHeight;
 
-    if(containerHeight - newMessageHeight <= scrollOffset) {
+    if (containerHeight - newMessageHeight <= scrollOffset) {
         $messages.scrollTop = $messages.scrollHeight;
     }
-
-
 }
 
 socket.on('message', (message) => {
